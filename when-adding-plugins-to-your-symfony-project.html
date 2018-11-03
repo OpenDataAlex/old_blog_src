@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="Alex Meadows" />
-        <meta name="description" content="I&#39;ve been wanting to do this for a while now, and finally found the time/bit the bullet. Wordpress, while awesome, just wasn&#39;t cutting it for me - especially since I had to pay quite a bit for hosting and the like. For now, I&#39;ll use GitHub pages and go from …" />
+        <meta name="description" content="Had the roughest time getting this one going - so therefore I&#39;m posting just in case anyone else gets stuck. Today, I started adding user security to the training database I&#39;ve been developing in Symfony 1.1. One of the great things about a strong framework like Symfony is the ability …" />
 
 
-    <title>Setting Up New Blog - OpenDataAlex's Blog</title>
+    <title>When Adding Plugins To Your Symfony Project - OpenDataAlex's Blog</title>
 
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css" />
 
@@ -52,12 +52,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=/setting-up-new-blog.html" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=/when-adding-plugins-to-your-symfony-project.html" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=/setting-up-new-blog.html" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=/when-adding-plugins-to-your-symfony-project.html" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -115,13 +115,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=/setting-up-new-blog.html" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=/when-adding-plugins-to-your-symfony-project.html" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=/setting-up-new-blog.html" target="popup">
+                        <a href="https://plus.google.com/share?url=/when-adding-plugins-to-your-symfony-project.html" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -235,7 +235,7 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="/category/symfony-webdev-archive.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             symfony, WebDev, Archive
@@ -256,7 +256,7 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="/category/updates.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Updates
@@ -307,20 +307,20 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="/setting-up-new-blog.html"
+                        <a href="/when-adding-plugins-to-your-symfony-project.html"
                            rel="bookmark"
-                           title="Permalink to Setting Up New Blog">
-                            Setting Up New Blog
+                           title="Permalink to When Adding Plugins To Your Symfony Project">
+                            When Adding Plugins To Your Symfony Project
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2018-10-27T11:16:00-04:00"> Sat 27 October 2018</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2008-09-16T20:09:26-04:00"> Tue 16 September 2008</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="/category/updates.html">Updates</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="/category/symfony-webdev-archive.html">symfony, WebDev, Archive</a>
             </span>
         </small>
     </div>
@@ -332,11 +332,37 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <p>I've been wanting to do this for a while now, and finally found the time/bit the bullet.  Wordpress, while awesome, 
-just wasn't cutting it for me - especially since I had to pay quite a bit for hosting and the like.
-For now, I'll use GitHub pages and go from there.  I have also switched over to using Pelican.
-My plan is to get all the old content re-posted into the new blog, which I don't think will be too 
-much trouble.  Just have to find the time. </p>
+                    <p>Had the roughest time getting this one going - so therefore I'm posting just in case anyone else gets stuck.</p>
+<p>Today, I started adding user security to the training database I've been developing in Symfony 1.1.  One of the great 
+things about a strong framework like Symfony is the ability to create/distribute plugins to increase the core 
+framework's functionality.  A very popular plugin, that I decided to use for my project, is <a href="http://www.symfony-project.org/plugins/sfGuardPlugin">sfGuardPlugin</a>.  
+This plugin handles security with groups and a bunch of other features that I haven't played with yet.</p>
+<p>There's a real good instruction set for installation/configuration with the plugin.  However, one thing not mentioned in
+ the instructions is the fact that you <em>have</em> to update your schema.xml file.  Otherwise, propel will throw this nice 
+error:</p>
+<blockquote>
+<p>No package found for database "propel" in schema.xml.  The propel.packageObjectModel property requires the package 
+attribute to be set for each database.</p>
+</blockquote>
+<p>So you'll need to update your schema file from this:</p>
+<blockquote>
+<p>&lt;?xml version="1.0" encoding="utf-8"&gt;
+    <database name="propel" defaultIdMethod="native" noxsd="true"></p>
+</blockquote>
+<p>to this:</p>
+<blockquote>
+<p>&lt;?xml version="1.0" encoding="utf-8"&gt;
+   <database name="propel" defaultIdMethod="native" noxsd="true" **package="lib.model"**></p>
+</blockquote>
+<p>The reason why is due to when a plugin has a schema of it's own.  Symfony/Propel will attempt to merge the plugin schema
+with your application schema.  Your application schema though is not initially setup to handle this kind of merger.  
+Adding that one variable should take care of that!</p>
+<p>Edit:  I originally had the change to be:</p>
+<blockquote>
+<p><strong>package="model"</strong></p>
+</blockquote>
+<p>This was incorrect and will result in your forms and models being stored in the primay folder for your symfony project - 
+which will result in you wondering what the hell happened (as has been my problem for the last two days =S).</p>
                 </div>
                 <footer class="text-right">
                     <p>- Alex Meadows</p>
