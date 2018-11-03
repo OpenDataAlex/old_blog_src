@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="Alex Meadows" />
-        <meta name="description" content="" />
+    <meta name="author" content="Alex Meadows" />
+    <meta name="keywords" content="Front End, Archive" />
 
 
-    <title>OpenDataAlex's Blog - Tags</title>
+    <title>Front End, Archive - OpenDataAlex's Blog</title>
 
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css" />
 
@@ -178,7 +178,7 @@
                         Categories
                     </a>
                 </li>
-                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse in">
                     <li >
                         <a href="/category/about-archive.html">
                             <i class="fa fa-folder-open padding-small"></i>
@@ -200,7 +200,7 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="/category/front-end-archive.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Front End, Archive
@@ -301,7 +301,24 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-    <h1>Tags for OpenDataAlex's Blog</h1><footer>
+<div class="row">
+    <div class="col-lg-9">
+        <header class="page-header">
+            <h1>Articles in Front End, Archive</h1>
+        </header>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-9">
+            <article>
+                <h4>
+                    <time datetime="2008-05-10T15:05:29-04:00"> Sat 10 May 2008</time>
+                    <a href="/fighting-ie-css-bugs.html">Fighting IE CSS Bugs</a>
+                </h4>
+            </article>
+    </div>
+</div>
+<footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
@@ -325,5 +342,24 @@
     <script src="/theme/js/bootstrap.min.js"></script>
     <!-- twitchy Script -->
     <script src="/theme/js/pelican_twitchy.min.js"></script>
+<script>
+    function FadeInOnScroll(ObjectList){
+        ObjectList.each(function(i) {
+            var bottom_of_object = $(this).position().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+            if( bottom_of_window > bottom_of_object ){
+                $(this).fadeTo(750,1);
+            }
+        });
+    }
+
+    articles = $("article").fadeTo(0, 0.05);
+    FadeInOnScroll(articles)
+
+    $(window).scroll(function() {
+        FadeInOnScroll(articles)
+    });
+</script>
 </body>
 </html>
